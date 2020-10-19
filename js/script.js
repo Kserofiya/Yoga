@@ -54,7 +54,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 'hours': hours,
                 'minutes': minutes,
                 'seconds': seconds
-            };
+            }
     }
 
     function setClock(id, endtime) {
@@ -87,6 +87,40 @@ window.addEventListener('DOMContentLoaded', function() {
                 hours.textContent = '00';
             }
         }
-    }
+    };
     setClock('timer', deadline);
+
+    // Modal
+
+    let more = document.querySelector('.more'),
+        descr = document.querySelector('.description-btn'),
+        overlay = document.querySelector('.overlay'),
+        close = document.querySelector('.popup-close');
+    
+    more.addEventListener('click', function() {
+        overlay.style.display = 'block';
+        this.classList.add('more-splash');
+        document.body.style.overflow = 'hidden';
+    });
+    descr.addEventListener('click', function() {
+        overlay.style.display = 'block';
+        this.classList.add('more-splash');
+        document.body.style.overflow = 'hidden';
+    });
+
+    close.addEventListener('click', function() {
+        overlay.style.display = 'none';
+        more.classList.remove('more-splash');
+        document.body.style.overflow = 'scroll';
+    });
+
+    // Второе задание
+
+// let age = document.getElementById('age');
+ 
+// function showUser(surname, name) {
+//          alert("Пользователь " + surname + " " + name + ", его возраст " + this.value);
+// }
+ 
+// showUser.apply(age, ["Горький","Максим"]);
 });
