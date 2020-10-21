@@ -170,5 +170,13 @@ window.addEventListener('DOMContentLoaded', function() {
 
         let formData = new FormData(form);
         request.send(formData);
+        
+        request.addEventListener('readystatechange', function() {
+            if (request.readyState < 4) {
+                statusMessage.innerHTML = message.loading;
+            } else if (request.readyState === 4 && request.status == 200) {
+                statusMessage.innerHTML = message.sucess;
+            }
+        });
     });
 });
