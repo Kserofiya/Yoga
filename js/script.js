@@ -176,7 +176,13 @@ window.addEventListener('DOMContentLoaded', function() {
                 statusMessage.innerHTML = message.loading;
             } else if (request.readyState === 4 && request.status == 200) {
                 statusMessage.innerHTML = message.sucess;
+            } else {
+                statusMessage.innerHTML = message.failure;
             }
         });
+
+        for (let i = 0; i < input.length; i++) {
+            input[i].value = '';
+        }
     });
 });
