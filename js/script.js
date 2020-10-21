@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', function() {
 
-    'use strict';
+'use strict';
 
     // Tabs
 
@@ -39,7 +39,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     // Timer
 
-    let deadline = '2020-10-21';
+    let deadline = '2020-12-08';
 
     function getTimeRemaining(endtime) {
         let t = Date.parse(endtime) - Date.parse(new Date()),
@@ -54,7 +54,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 'hours': hours,
                 'minutes': minutes,
                 'seconds': seconds
-            }
+            };
     }
 
     function setClock(id, endtime) {
@@ -87,7 +87,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 hours.textContent = '00';
             }
         }
-    };
+    }
     setClock('timer', deadline);
 
     // Modal
@@ -145,4 +145,30 @@ window.addEventListener('DOMContentLoaded', function() {
 // const item = new Options(300, 350, "red", 14, "center");
 
 // item.createDiv();
+
+
+// Form
+    let message = {
+        loading: 'Загрузка...',
+        sucess: 'Спасибо! Скоро мы с Вами свяжемся!',
+        failure: 'Что-то пошло не так...'
+    }
+
+    let form = document.querySelector('.main-form'),
+        input = form.getElementsByTagName('input'),
+        statusMessage = document.createElement('div');
+
+        statusMessage.classList.add('status');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        form.appendChild(statusMessage);
+
+        let request = new XMLHttpRequest();
+        request.open('POST', 'server.php');
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        let formData = new FormData(form);
+        request.send(formData);
+    });
 });
